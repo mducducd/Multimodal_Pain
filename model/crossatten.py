@@ -68,7 +68,7 @@ class NormalSubLayer(nn.Module):
 
 class DCNLayer(nn.Module):
 
-    def __init__(self, dim1, dim2, num_seq, dropout, length1, length2, num_classes):
+    def __init__(self, dim1, dim2, num_seq, dropout, length1, length2, num_classes=5):
         super(DCNLayer, self).__init__()
         self.dcn_layers = nn.ModuleList([NormalSubLayer(dim1, dim2, dropout) for _ in range(num_seq)])
         self.linear1 = nn.Linear(length1, 16)
@@ -81,6 +81,7 @@ class DCNLayer(nn.Module):
         self.out = nn.Linear(dim1+dim2, num_classes)
 
     def forward(self, data1, data2):
+        # print(data1.shape, data2.shape)
         data1 = self.linear1(data1.transpose(1, 2)).transpose(1, 2)
         data2 = self.linear2(data2.transpose(1, 2)).transpose(1, 2)
         for dense_coattn in self.dcn_layers:
