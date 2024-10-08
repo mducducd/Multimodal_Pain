@@ -13,7 +13,7 @@ site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.
 ## Pre-training
 Much of the code in this repo is taken from:
 Visual branch [MARLIN](https://github.com/ControlNet/MARLIN).
-Signal branch [mvts]([https://github.com/ControlNet/MARLIN](https://github.com/gzerveas/mvts_transformer)).
+Signal branch [mvts](https://github.com/gzerveas/mvts_transformer).
 
 ## Probing
 python3 evaluate.py
