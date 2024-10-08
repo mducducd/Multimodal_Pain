@@ -10,6 +10,11 @@ git push -u origin main
 site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
             output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
 
+## Pre-training
+Much of the code in this repo is taken from:
+Visual branch [MARLIN](https://github.com/ControlNet/MARLIN).
+Signal branch [mvts]([https://github.com/ControlNet/MARLIN](https://github.com/gzerveas/mvts_transformer)).
 
-## Acknowledgements
-Much of the code in this repo is taken from [MARLIN](https://github.com/ControlNet/MARLIN).
+## Probing
+python3 evaluate.py
+
