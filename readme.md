@@ -12,4 +12,4 @@ site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.
 
 
 ## Acknowledgements
-Much of the code in this repo is taken from [MARLIN]([https://github.com/Mael-zys/T2M-GPT](https://github.com/ControlNet/MARLIN)).
+Much of the code in this repo is taken from [MARLIN](https://github.com/ControlNet/MARLIN).
