@@ -40,7 +40,7 @@ python train.py \
     --num_workers 8 \
     --batch_size 16 \
     --epochs 2000 \
-    --official_pretrained /path/to/videomae/checkpoint.pth
+    --official_pretrained /path/to/checkpoint.pth
 ```
 ##Signal
 Directory for .csv
