@@ -4,7 +4,7 @@ TypeError: forward() got an unexpected keyword argument 'is_causal' (torch 2.x)
 site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
             output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
 
-##Pre-training 
+## Pre-training 
 ### Video
 Extract faces from videos:
 ```bash
@@ -42,7 +42,7 @@ python train.py \
     --epochs 2000 \
     --official_pretrained /path/to/checkpoint.pth
 ```
-###Signal
+### Signal
 Directory for .csv
 ```
 ├── Data
