@@ -80,4 +80,3 @@ Visual branch [MARLIN](https://github.com/ControlNet/MARLIN).
 
 Signal branch [mvts](https://github.com/gzerveas/mvts_transformer).
 
-
