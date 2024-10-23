@@ -58,6 +58,21 @@ cd mvts_transformer
 python src/main.py --output_dir experiments --comment "pretraining through imputation" --name $1_pretrained --records_file Imputation_records.xls --data_dir /path/to/$1/ --data_class pain --pattern TRAIN --val_ratio 0.2 --epochs 700 --lr 0.001 --optimizer RAdam --batch_size 32 --pos_encoding learnable --d_model 128
 ```
 
+## Probing
+Video data directory:
+```
+├── Data
+│   ├── video
+│   │   ├── video1
+            ├── 1.jpg
+            ├── ...
+│   │   ├── ...
+│   ├── celebvhq_info.json
+│   ├── ...
+```
+```bash
+python3 evaluate.py
+```
 ## References
 Much of the code in this repo is taken from:
 
@@ -65,6 +80,4 @@ Visual branch [MARLIN](https://github.com/ControlNet/MARLIN).
 
 Signal branch [mvts](https://github.com/gzerveas/mvts_transformer).
 
-## Probing
-python3 evaluate.py
 
