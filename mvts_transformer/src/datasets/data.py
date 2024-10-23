@@ -582,7 +582,7 @@ class PMUData(BaseData):
         df = df.drop(df.columns[0], axis=1)
         return df
 
-class PMUData1(BaseData):
+class PainData(BaseData):
     """
     Dataset class for Phasor Measurement Unit dataset.
     Attributes:
@@ -601,31 +601,9 @@ class PMUData1(BaseData):
 
         self.all_df = self.load_all(root_dir, file_list=file_list, pattern=pattern)
 
-        # if config['data_window_len'] is not None:
-        #     self.max_seq_len = config['data_window_len']
-        #     # construct sample IDs: 0, 0, ..., 0, 1, 1, ..., 1, 2, ..., (num_whole_samples - 1)
-        #     # num_whole_samples = len(self.all_df) // self.max_seq_len  # commented code is for more general IDs
-        #     # IDs = list(chain.from_iterable(map(lambda x: repeat(x, self.max_seq_len), range(num_whole_samples + 1))))
-        #     # IDs = IDs[:len(self.all_df)]  # either last sample is completely superfluous, or it has to be shortened
-        #     IDs = [i // self.max_seq_len for i in range(self.all_df.shape[0])]
-        #     self.all_df.insert(loc=0, column='ExID', value=IDs)
-        # else:
-        #     # self.all_df = self.all_df.sort_values(by=['ExID'])  # dataset is presorted
-        #     self.max_seq_len = 30
-
-        # self.all_df = self.all_df.set_index('ExID')
-        # rename columns
-        # self.all_df.columns = [re.sub(r'\d+', str(i//3), col_name) for i, col_name in enumerate(self.all_df.columns[:])]
-        #self.all_df.columns = ["_".join(col_name.split(" ")[:-1]) for col_name in self.all_df.columns[:]]
         self.all_IDs = self.all_df.index.unique()  # all sample (session) IDs
 
-        # if limit_size is not None:
-        #     if limit_size > 1:
-        #         limit_size = int(limit_size)
-        #     else:  # interpret as proportion if in (0, 1]
-        #         limit_size = int(limit_size * len(self.all_IDs))
-        #     self.all_IDs = self.all_IDs[:limit_size]
-        #     self.all_df = self.all_df.loc[self.all_IDs]
+   
 
         self.feature_names = self.all_df.columns  # all columns are used as features
         self.feature_df = self.all_df[self.feature_names]
@@ -645,7 +623,7 @@ class PMUData1(BaseData):
         # Select paths for training and evaluation
         if file_list is None:
             data_paths = glob.glob(os.path.join(root_dir, '*/*'))  # list of all paths
-            # print('dcmdcmdcmd', data_paths)
+          
         else:
             data_paths = [os.path.join(root_dir, p) for p in file_list]
         if len(data_paths) == 0:
@@ -659,16 +637,7 @@ class PMUData1(BaseData):
 
         input_paths = [p for p in selected_paths if os.path.isfile(p) and p.endswith('.csv')]
         if len(input_paths) == 0:
-            raise Exception("No .csv files found using pattern: '{}'".format(pattern))
-
-        # if self.n_proc > 1:
-        #     # Load in parallel
-        #     _n_proc = min(self.n_proc, len(input_paths))  # no more than file_names needed here
-        #     logger.info("Loading {} datasets files using {} parallel processes ...".format(len(input_paths), _n_proc))
-        #     with Pool(processes=_n_proc) as pool:
-        #         all_df = pd.concat(pool.map(PMUData.load_single, input_paths))
-        # else:  # read 1 file at a time
-        #     all_df = pd.concat(PMUData.load_single(path) for path in input_paths)
+  
         indice = 0
         list_df = []
         for path in input_paths:
@@ -695,13 +664,7 @@ class PMUData1(BaseData):
     @staticmethod
     def load_single(filepath):
         df = PMUData.read_data(filepath)
-        #df = PMUData.select_columns(df)
-        # num_nan = df.isna().sum().sum()
-        # if num_nan > 0:
-        #     logger.warning("{} nan values in {} will be replaced by 0".format(num_nan, filepath))
-        #     df = df.fillna(0)
-        
-        
+   
         return df
 
     @staticmethod
@@ -715,4 +678,4 @@ data_factory = {'weld': WeldData,
                 'tsra1': TSRegressionArchive1,
                 'tsra': TSRegressionArchive,
                 'pmu': PMUData,
-                'pmu1': PMUData1}
+                'pain': PainData}
