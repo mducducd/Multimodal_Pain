@@ -41,6 +41,20 @@ Abdulaziz_Kamilov/4,195
 ```
 
 Video pre-training:
+
+Directory for .csv
+```
+├── Train
+│   ├── cropped
+│   │   ├── id
+│   │   ├── id
+│   │   ├── ...
+│   ├── face_parsing_images_DB
+│   ├── train.txt
+│   ├── val.txt
+│   ├── ...
+```
+
 ```bash
 python train.py \
     --config config/pretrain/marlin_vit_base.yaml \
@@ -56,7 +70,10 @@ Directory for .csv
 ```
 ├── Data
 │   ├── id1
-│   │   ├── 1.csv
+│   │   |   ├── video1
+│   │   |   |   ├── frame1.jpg
+│   │   |   |   ├── ...
+│   │   |   ├── ...
 │   │   ├── ...
 │   ├── id2
 │   ├── ...
