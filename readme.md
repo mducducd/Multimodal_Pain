@@ -13,7 +13,7 @@ site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.
             output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
 
 ## Pre-training 
-Dataset [BioVid]([https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html))
+Dataset [BioVid](https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html)
 ### Video
 Extract faces from videos:
 ```bash
