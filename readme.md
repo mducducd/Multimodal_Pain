@@ -59,15 +59,24 @@ python src/main.py --output_dir experiments --comment "pretraining through imput
 ```
 
 ## Probing
-Video data directory:
+Data directory:
 ```
-├── Data
+├── Train
 │   ├── video
-│   │   ├── video1
-            ├── 1.jpg
+│   │   ├── id
+│   │   |   ├── video1
+│   │   |   |   ├── frame1.jpg
+│   │   |   |   ├── ...
+│   │   |   ├── ...
+│   │   ├── ...
+│   ├── biosignals_filtered
+│   │   ├── id
+            ├── 1.csv
             ├── ...
 │   │   ├── ...
 │   ├── celebvhq_info.json
+│   ├── train.txt
+│   ├── val.txt
 │   ├── ...
 ```
 ```bash
