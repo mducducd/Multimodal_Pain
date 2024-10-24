@@ -16,7 +16,7 @@ https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html
 
 Dataset [BioVid](https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html)
 
-Understand data loader in source to modify with the format for your data
+Understand data loaders in the source to modify the format of your data
 
 ## Pre-training 
 ### Video
