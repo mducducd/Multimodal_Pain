@@ -11,9 +11,11 @@ conda env create -f environment.yml
 TypeError: forward() got an unexpected keyword argument 'is_causal' (torch 2.x)
 site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
             output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
-
-## Pre-training 
+https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html
+## Dataset
 Dataset [BioVid](https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html)
+Understand data loadesr in source to modify with the format for your data
+## Pre-training 
 ### Video
 Extract faces from videos:
 ```bash
