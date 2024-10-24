@@ -1,4 +1,4 @@
-## mts env fix
+## mts env fix (for Torch 2.x)
 
 TypeError: forward() got an unexpected keyword argument 'is_causal' (torch 2.x)
 site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
