@@ -11,10 +11,10 @@ conda env create -f environment.yml
 TypeError: forward() got an unexpected keyword argument 'is_causal' (torch 2.x)
 site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
             output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
-https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html
+
 ## Dataset
 
-Dataset [BioVid](https://www.cs.tau.ac.il/~wolf/ytfaces/](https://www.nit.ovgu.de/BioVid.html)
+Dataset [BioVid](https://www.nit.ovgu.de/BioVid.html)
 
 Understand data loaders in the source to modify the format of your data
 
