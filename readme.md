@@ -16,7 +16,9 @@ site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.
 
 Dataset [BioVid](https://www.nit.ovgu.de/BioVid.html)
 
-Understand data loaders in the source to modify the format of your data
+This repo is not guaranteed to work properly. Modify classifer.py to make your own multimodal models.
+Understand data loaders in the source to modify the format of your data dimensions.
+It is useful to look at References and their instructions.
 
 ## Pre-training 
 ### Video
