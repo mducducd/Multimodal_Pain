@@ -1,5 +1,14 @@
 # Visual-Physiological Pain Assessment with Representation Learning and Dual Attention Fusion
 
+This repo is not guaranteed to work properly. 
+
+Modify classifer.py to make your own multimodal models.
+
+
+Understand data loaders in the source to modify the format of your data dimensions.
+
+
+It is useful to look at References and their instructions.
 ## Installation:
 
 ```bash
