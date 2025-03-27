@@ -250,6 +250,47 @@ class TSTransformerEncoder(nn.Module):
 
         return output
 
+class TSTransformerDecoder(nn.Module):
+    def __init__(self, feat_dim, max_len, d_model, n_heads, num_layers, dim_feedforward, dropout=0.0,
+                 pos_encoding='learnable', activation='gelu', norm='BatchNorm', freeze=False):
+        super(TSTransformerDecoder, self).__init__()
+
+        self.max_len = max_len
+        self.d_model = d_model
+        self.n_heads = n_heads
+        self.feat_dim = feat_dim
+
+        self.project_inp = nn.Linear(feat_dim, d_model)
+        self.pos_enc = get_pos_encoder(pos_encoding)(d_model, dropout=dropout*(1.0 - freeze), max_len=max_len)
+
+        if norm == 'LayerNorm':
+            decoder_layer = TransformerEncoderLayer(d_model, self.n_heads, dim_feedforward, dropout*(1.0 - freeze), activation=activation)
+        else:
+            decoder_layer = TransformerBatchNormEncoderLayer(d_model, self.n_heads, dim_feedforward, dropout*(1.0 - freeze), activation=activation)
+
+        self.transformer_decoder = nn.TransformerEncoder(decoder_layer, num_layers)
+        self.output_layer = nn.Linear(d_model, feat_dim)
+        self.act = _get_activation_fn(activation)
+        self.dropout1 = nn.Dropout(dropout)
+    
+    def forward(self, X, padding_masks):
+        """
+        Args:
+            X: (batch_size, seq_length, feat_dim) torch tensor of masked features (input to reconstruct)
+            padding_masks: (batch_size, seq_length) boolean tensor, 1 means keep vector at this position, 0 means padding
+        Returns:
+            output: (batch_size, seq_length, feat_dim)
+        """
+        inp = X.permute(1, 0, 2)
+        inp = self.project_inp(inp) * math.sqrt(self.d_model)  # Project to d_model space
+        inp = self.pos_enc(inp)  # Add positional encoding
+        output = self.transformer_decoder(inp, src_key_padding_mask=~padding_masks)
+        output = self.act(output)
+        output = output.permute(1, 0, 2)  # Convert back to (batch_size, seq_length, d_model)
+        output = self.dropout1(output)
+        output = self.output_layer(output)  # Reconstruct to original feature dimension
+        
+        return output
 
 class TSTransformerEncoderClassiregressor(nn.Module):
     """
