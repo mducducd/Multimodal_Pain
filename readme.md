@@ -124,10 +124,5 @@ Data directory:
 ```bash
 python3 evaluate.py
 ```
-## References
-Much of the code in this repo is taken from:
 
-Visual branch [MARLIN](https://github.com/ControlNet/MARLIN).
-
-Signal branch [mvts](https://github.com/gzerveas/mvts_transformer).
 
