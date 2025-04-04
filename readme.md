@@ -29,10 +29,14 @@ This repo is not guaranteed to work properly. Modify classifer.py to make your o
 Understand data loaders in the source to modify the format of your data dimensions.
 It is useful to look at References and their instructions.
 
-## Architecture
+## Model details
 [Video MAE backbone](https://github.com/mducducd/Multimodal_Pain/tree/main/src/marlin_pytorch/model)
+
 [Time series MAE backbone](https://github.com/mducducd/Multimodal_Pain/tree/main/mvts_transformer/src/models)
+
 [Attention fusion](model/crossatten.py)
+
+[classifier (for probing/finetuning)](model/classifier.py)
 
 ## Pre-training 
 ### Video
