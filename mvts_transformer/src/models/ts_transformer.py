@@ -292,6 +292,51 @@ class TSTransformerDecoder(nn.Module):
         
         return output
 
+class TSTransformerAutoencoder(nn.Module):
+    def __init__(self, feat_dim, max_len, d_model, n_heads, num_layers, dim_feedforward, 
+                 dropout=0.0, pos_encoding='learnable', activation='gelu', norm='BatchNorm', freeze=False):
+        super(TSTransformerAutoencoder, self).__init__()
+        
+        # Encoder (using same architecture as your original encoder)
+        self.encoder = TSTransformerEncoder(
+            feat_dim=feat_dim,
+            max_len=max_len,
+            d_model=d_model,
+            n_heads=n_heads,
+            num_layers=num_layers,
+            dim_feedforward=dim_feedforward,
+            dropout=dropout,
+            pos_encoding=pos_encoding,
+            activation=activation,
+            norm=norm,
+            freeze=freeze
+        )
+        
+        # Decoder (using your exact decoder class)
+        self.decoder = TSTransformerDecoder(
+            feat_dim=feat_dim,
+            max_len=max_len,
+            d_model=d_model,
+            n_heads=n_heads,
+            num_layers=num_layers,
+            dim_feedforward=dim_feedforward,
+            dropout=dropout,
+            pos_encoding=pos_encoding,
+            activation=activation,
+            norm=norm,
+            freeze=freeze
+        )
+        
+    def forward(self, x, padding_masks):
+        # Encode the input
+        encoded = self.encoder(x, padding_masks)
+        
+        # Decode the encoded representation
+        # Note: We use the same padding masks for decoder
+        reconstructed = self.decoder(encoded, padding_masks)
+        
+        return reconstructed
+
 class TSTransformerEncoderClassiregressor(nn.Module):
     """
     Simplest classifier/regressor. Can be either regressor or classifier because the output does not include
