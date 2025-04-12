@@ -116,8 +116,6 @@ def evaluate_celebvhq(args, ckpt, dm):
         ys[i * args.batch_size: (i + 1) * args.batch_size] = y
 
     preds = preds.sigmoid()
-    acc = ((preds > 0.5) == ys).float().mean()
-    
 
     # Convert predicted probabilities to class indices by taking the argmax
     preds_bool = torch.argmax(preds, dim=1)
