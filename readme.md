@@ -1,7 +1,7 @@
 # Visual-Physiological Pain Assessment  
 **Representation Learning and Dual Attention Fusion**
 
-> ⚠️ This repository is under active development and not guaranteed to work out-of-the-box.
+> ⚠️Disclaimer: This repo is a work in progress and may not run flawlessly out-of-the-box. We're sharing the code as-is for reference and reproducibility.
 
 ## 📚 Overview
 
