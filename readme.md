@@ -120,6 +120,8 @@ python src/main.py --output_dir experiments --comment "pretraining through imput
 
 ## 🧪 Probing / Classifier Training
 
+Prepare your pre-trained model from previous pre-training, and modify `model/classifier.py` to load them.
+
 Directory Layout:
 ```
 ├── Train
