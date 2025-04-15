@@ -27,9 +27,10 @@ conda env create -f environment.yml
 ### 📌 BioVid Dataset  
 Download: [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html)
 
-To adapt your own dataset:
+To adapt your own dataset as well as for shape/format changes:
 - Modify `model/classifier.py` for architecture.
-- Modify dataloaders in `src/` for shape/format changes.
+- Modify dataloaders in `src/dataset/celebv_hq.py`.
+- Following Pytorch  [Lightning 1.7.7](https://lightning.ai/docs/pytorch/1.7.7/) modules.
 
 
 ## 🧠 Model Components
