@@ -48,8 +48,9 @@ To adapt your own dataset as well as for shape/format changes:
 #### 1. Face Preprocessing
 ```bash
 python preprocess/celebvhq_preprocess.py --data_dir /path/to/videos
+```
 
-Generate masks:
+#### 2. Generate masks:
 ```bash
 python preprocess/ytf_preprocess.py --data_dir
 ```
@@ -70,7 +71,7 @@ Abdul_Majeed_Shobokshi/1,624
 Abdulaziz_Kamilov/4,195
 ```
 
-Video pre-training:
+#### 3. Video pre-training:
 
 Directory for .csv
 ```
