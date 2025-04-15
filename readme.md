@@ -20,6 +20,7 @@ This repository focuses on **multimodal pain assessment** using both **facial vi
 
 ```bash
 conda env create -f environment.yml
+```
 
 ## 📁 Dataset
 
