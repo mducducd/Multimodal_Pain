@@ -1,49 +1,52 @@
-# Visual-Physiological Pain Assessment with Representation Learning and Dual Attention Fusion
+# Visual-Physiological Pain Assessment  
+**Representation Learning and Dual Attention Fusion**
 
-This repo is not guaranteed to work properly. 
+> ⚠️ This repository is under active development and not guaranteed to work out-of-the-box.
 
-Modify classifer.py to make your own multimodal models.
+## 📚 Overview
 
+This repository focuses on **multimodal pain assessment** using both **facial video** and **bio-physiological signals**. The architecture consists of two main stages:
 
-Understand data loaders in the source to modify the format of your data dimensions.
+1. **Representation Learning**
+   - **Video Branch**: Masked Autoencoder for facial expression modeling, based on [MARLIN](https://github.com/ControlNet/MARLIN).
+   - **Signal Branch**: Masked Autoencoder for multivariate time-series signals, based on [MVTS Transformer](https://github.com/gzerveas/mvts_transformer).
 
+2. **Classifier Training**
+   - Attention-based fusion of video and signal features for pain-level classification.
 
-It is useful to look at References and their instructions.
-## Installation:
+---
+
+## 🛠️ Installation
 
 ```bash
 conda env create -f environment.yml
-```
 
-## mts env fix (for Torch 2.x)
+## 📁 Dataset
 
-TypeError: forward() got an unexpected keyword argument 'is_causal' (torch 2.x)
-site-packpage -> torch(>2.) -> TransformerEncoder -> forward -> for mod in self.layers:
-            output = mod(output, src_mask=mask, src_key_padding_mask=src_key_padding_mask_for_layers) ##remove is_casual=is_casual
+### 📌 BioVid Dataset  
+Download: [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html)
 
-## Dataset
+To adapt your own dataset:
+- Modify `model/classifier.py` for architecture.
+- Modify dataloaders in `src/` for shape/format changes.
 
-Dataset [BioVid](https://www.nit.ovgu.de/BioVid.html)
 
-This repo is not guaranteed to work properly. Modify classifer.py to make your own multimodal models.
-Understand data loaders in the source to modify the format of your data dimensions.
-It is useful to look at References and their instructions.
+## 🧠 Model Components
 
-## Model details
-[Video MAE backbone](https://github.com/mducducd/Multimodal_Pain/tree/main/src/marlin_pytorch/model)
+| Component        | Description                         | Path |
+|------------------|-------------------------------------|------|
+| Video MAE        | Visual encoder                      | [`src/marlin_pytorch/model`](https://github.com/mducducd/Multimodal_Pain/tree/main/src/marlin_pytorch/model) |
+| Signal MAE       | Time-series encoder                 | [`mvts_transformer/src/models`](https://github.com/mducducd/Multimodal_Pain/tree/main/mvts_transformer/src/models) |
+| Cross Attention  | Fusion between modalities           | [`model/crossatten.py`](model/crossatten.py) |
+| Classifier       | Final classification head           | [`model/classifier.py`](model/classifier.py) |
 
-[Time series MAE backbone](https://github.com/mducducd/Multimodal_Pain/tree/main/mvts_transformer/src/models)
+## ✅ 🧪 Pre-training
+### 🎥 Video Branch
 
-[Attention fusion](model/crossatten.py)
-
-[classifier (for probing/finetuning)](model/classifier.py)
-
-## Pre-training 
-### Video
-Extract faces from videos:
+#### 1. Face Preprocessing
 ```bash
-python preprocess/celebvhq_preprocess.py --data_dir
-```
+python preprocess/celebvhq_preprocess.py --data_dir /path/to/videos
+
 Generate masks:
 ```bash
 python preprocess/ytf_preprocess.py --data_dir
@@ -90,7 +93,9 @@ python train.py \
     --epochs 2000 \
     --official_pretrained /path/to/checkpoint.pth
 ```
-### Signal
+
+🧬 Signal Branch
+
 Directory for .csv
 ```
 ├── Data
@@ -103,14 +108,16 @@ Directory for .csv
 │   ├── id2
 │   ├── ...
 ```
+
 Signal pre-training
 ```bash
 cd mvts_transformer
 python src/main.py --output_dir experiments --comment "pretraining through imputation" --name $1_pretrained --records_file Imputation_records.xls --data_dir /path/to/$1/ --data_class pain --pattern TRAIN --val_ratio 0.2 --epochs 700 --lr 0.001 --optimizer RAdam --batch_size 32 --pos_encoding learnable --d_model 128
 ```
 
-## Probing
-Data directory:
+## 🧪 Probing / Classifier Training
+
+Directory Layout:
 ```
 ├── Train
 │   ├── video
@@ -130,6 +137,9 @@ Data directory:
 │   ├── val.txt
 │   ├── ...
 ```
+
+Run Evaluation / Classification
+
 ```bash
 python3 evaluate.py
 ```
