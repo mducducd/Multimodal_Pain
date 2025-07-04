@@ -21,7 +21,7 @@ This repository focuses on **multimodal pain assessment** using both **facial vi
 ```bash
 conda env create -f environment.yml
 ```
-⚙️ The model was trained and evaluated on NVIDIA RTX 8000 GPUs. Video encoder fits within a 16 GB GPU VRAM budget during training with small batch sizes fits within a 16 GB GPU VRAM.
+⚙️ The model was trained and evaluated on NVIDIA RTX 8000 GPUs. Video encoder fits within a 16 GB GPU VRAM budget during training with small batch sizes.
 
 ## 📁 Dataset
 
