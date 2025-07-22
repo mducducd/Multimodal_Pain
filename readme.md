@@ -26,7 +26,7 @@ conda env create -f environment.yml
 ## 📁 Dataset
 Publicly available third-party datasets:
 
-BioVid Heat Pain Database: Available upon request from the official website [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html), as described in [10.1109/CYBConf.2013.6617456](10.1109/CYBConf.2013.6617456)
+BioVid Heat Pain Database: Available upon request from the official website [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html, as described in [10.1109/CYBConf.2013.6617456](10.1109/CYBConf.2013.6617456)
 
 AI4Pain dataset: Available upon request from the official website [AI4Pain Challenge](https://sites.google.com/view/ai4pain/challenge-details, as described in [10.1109/ACIIW63320.2024.00012](10.1109/ACIIW63320.2024.00012)
 
