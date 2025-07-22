@@ -24,9 +24,11 @@ conda env create -f environment.yml
 ⚙️ The model was trained and evaluated on NVIDIA RTX 8000 GPUs. Video encoder fits within a 16 GB GPU VRAM budget during training with small batch sizes.
 
 ## 📁 Dataset
+Publicly available third-party datasets:
 
-### 📌 BioVid Dataset  
-Download: [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html)
+BioVid Heat Pain Database: Available upon request from the official website [https://www.nit.ovgu.de/BioVid.html](https://www.nit.ovgu.de/BioVid.html), as described in [10.1109/CYBConf.2013.6617456](10.1109/CYBConf.2013.6617456)
+
+AI4Pain dataset: Available upon request from the official website [AI4Pain Challenge](https://sites.google.com/view/ai4pain/challenge-details, as described in [10.1109/ACIIW63320.2024.00012](10.1109/ACIIW63320.2024.00012)
 
 To adapt your own dataset as well as for shape/format changes:
 - Modify `model/classifier.py` for architecture.
